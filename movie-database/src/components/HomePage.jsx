@@ -1,4 +1,5 @@
 import React from "react";
+import MovieCard from "./MovieCard";
 
 const HomePage = () => {
   return (
@@ -56,18 +57,7 @@ const HomePage = () => {
             <h2 className="text-2xl font-bold mb-6">Trending</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((item) => (
-                <div
-                  key={item}
-                  className="bg-gray-700 rounded-lg overflow-hidden"
-                >
-                  <div className="h-48 bg-gray-600 flex items-center justify-center">
-                    <div className="text-gray-400 text-3xl">🎬</div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-800">Movie Name</h3>
-                    <p className="text-gray-600">2025</p>
-                  </div>
-                </div>
+                <MovieCard key={item} title="Movie Name" year="2025" />
               ))}
             </div>
           </div>
@@ -77,18 +67,7 @@ const HomePage = () => {
             <h2 className="text-2xl font-bold mb-6">Top Rated</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((item) => (
-                <div
-                  key={item}
-                  className="bg-gray-700 rounded-lg overflow-hidden"
-                >
-                  <div className="h-48 bg-gray-600 flex items-center justify-center">
-                    <div className="text-gray-400 text-3xl">🎬</div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-800">Movie Name</h3>
-                    <p className="text-gray-600">2025</p>
-                  </div>
-                </div>
+                <MovieCard key={item} title="Movie Name" year="2025" />
               ))}
             </div>
           </div>
@@ -98,18 +77,7 @@ const HomePage = () => {
             <h2 className="text-2xl font-bold mb-6">Upcoming</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((item) => (
-                <div
-                  key={item}
-                  className="bg-gray-700 rounded-lg overflow-hidden"
-                >
-                  <div className="h-48 bg-gray-600 flex items-center justify-center">
-                    <div className="text-gray-400 text-3xl">🎬</div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-800">Movie Name</h3>
-                    <p className="text-gray-600">2025</p>
-                  </div>
-                </div>
+                <MovieCard key={item} title="Movie Name" year="2025" />
               ))}
             </div>
           </div>
