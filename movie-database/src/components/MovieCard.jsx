@@ -1,14 +1,24 @@
 import React from "react";
 
-const MovieCard = ({ title, year }) => {
+const MovieCard = ({ movie }) => {
+  const releaseYear = movie.release_date
+    ? movie.release_date.split("-")[0]
+    : "N/A";
+  const rating = movie.vote_average ? movie.vote_average.toFixed(1) : "N/A";
+
   return (
-    <div className="bg-gray-700 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg cursor-pointer">
-      <div className="h-48 bg-gray-600 flex items-center justify-center">
-        <div className="text-gray-400 text-3xl">🎬</div>
-      </div>
-      <div className="p-4">
-        <h3 className="font-semibold text-white">{title}</h3>
-        <p className="text-gray-400">{year}</p>
+    <div className="w-48 flex-shrink-0 bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+        className="w-full h-auto"
+      />
+      <div className="p-2">
+        <h3 className="text-white font-semibold text-sm">{movie.title}</h3>
+        <div className="flex justify-between mt-1 text-gray-300 text-xs">
+          <span>{releaseYear}</span>
+          <span>⭐ {rating}</span>
+        </div>
       </div>
     </div>
   );

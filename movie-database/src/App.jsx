@@ -1,5 +1,7 @@
 import "./App.css";
 import Homepage from "./components/HomePage";
+import MovieCard from "./components/MovieCard";
+import MovieList from "./components/MovieList";
 
 function App() {
   return (

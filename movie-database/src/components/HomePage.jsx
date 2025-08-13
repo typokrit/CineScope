@@ -1,10 +1,13 @@
-import React from "react";
-import MovieCard from "./MovieCard";
+import HeroSection from "./HeroSection";
+import MovieList from "./MovieList";
+
+const API_KEY = "c54cd656100db8b77afd85406f1c35cd";
+// const BASE_URL = "https://api.themoviedb.org/3";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-800 text-white">
-      {/* Header */}
+      {/* header */}
       <header className="bg-gray-800 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold">CineScope</div>
@@ -30,61 +33,33 @@ const HomePage = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="px-6 py-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-700 w-full h-96 rounded-lg flex items-center justify-center mb-6">
-            <div className="text-gray-400 text-6xl">🎬</div>
-          </div>
-          <h1 className="text-4xl font-bold mb-4">Movie Title</h1>
-          <p className="text-gray-300 mb-6 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <button className="bg-gray-600 hover:bg-gray-500 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors">
-            View Details
-          </button>
-        </div>
-      </section>
-
-      {/* Movie Sections */}
+      {/* hero section */}
+      <HeroSection
+        fetchUrl={`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`}
+        limit={5}
+      />
+      {/* movie section */}
       <section className="px-6 py-8">
         <div className="max-w-7xl mx-auto space-y-12">
-          {/* Trending Section */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Trending</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <MovieCard key={item} title="Movie Name" year="2025" />
-              ))}
-            </div>
-          </div>
-
-          {/* Top Rated Section */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Top Rated</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <MovieCard key={item} title="Movie Name" year="2025" />
-              ))}
-            </div>
-          </div>
-
-          {/* Upcoming Section */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Upcoming</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <MovieCard key={item} title="Movie Name" year="2025" />
-              ))}
-            </div>
-          </div>
+          {/* trending section */}
+          <MovieList
+            title="Trending"
+            fetchUrl={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`}
+          />
+          {/* top rated */}
+          <MovieList
+            title="Top Rated"
+            fetchUrl={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`}
+          />
+          {/* upcoming */}
+          <MovieList
+            title="Upcoming"
+            fetchUrl={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`}
+          />
         </div>
       </section>
 
-      {/* Footer */}
+      {/* footer */}
       <footer className="bg-gray-800 px-6 py-12 border-t border-gray-700">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
