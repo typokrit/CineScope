@@ -14,7 +14,7 @@ CineScope is a responsive Movie Database web application built with React and Ta
 
 - React (with Vite)
 - Tailwind CSS
-- OMDB API
+- TMDB API
 - React Router (for navigation)
 
 Happy movie hunting with CineScope! 🎬🍿
