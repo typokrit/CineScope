@@ -1,7 +1,7 @@
 import HeroSection from "./HeroSection";
 import MovieList from "./MovieList";
 
-const API_KEY = "c54cd656100db8b77afd85406f1c35cd";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 // const BASE_URL = "https://api.themoviedb.org/3";
 
 const HomePage = () => {
