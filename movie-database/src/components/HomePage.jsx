@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-800 text-white">
       {/* header */}
-      <header className="bg-gray-800 px-6 py-4">
+      <header className="bg-gray-800 px-20 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold">CineScope</div>
           <nav className="flex items-center space-x-8">
@@ -27,7 +27,7 @@ const HomePage = () => {
             <input
               type="text"
               placeholder="Search"
-              className="px-3 py-1 bg-gray-700 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-600"
+              className="px-3 py-1 bg-white-700 rounded text-black placeholder-white-400 focus:outline-none focus:ring-2 focus:ring-gray-600"
             />
           </nav>
         </div>
