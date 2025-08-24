@@ -1,39 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const MovieDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
       .then((res) => res.json())
-      .then((data) => setMovie(data));
+      .then(setMovie);
   }, [id]);
 
-  if (!movie)
+  if (!movie) {
     return (
-      <div className="min-h-screen bg-[#202020] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#121212] text-white flex items-center justify-center">
         Loading...
       </div>
     );
+  }
 
   const year = movie.release_date?.split("-")[0] || "N/A";
   const rating = movie.vote_average?.toFixed(1) || "N/A";
 
   return (
-    <div className="min-h-screen bg-[#202020] text-white p-6">
-      <div className="max-w-5xl mx-auto">
-        <Link
-          to="/"
-          className="text-blue-400 hover:underline mb-4 inline-block"
+    <div
+      className="min-h-screen relative text-white"
+      style={{
+        backgroundImage: movie.backdrop_path
+          ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
+          : undefined,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/80" />
+
+      <div className="relative max-w-6xl mx-auto p-6">
+        <button
+          onClick={() => navigate("/")}
+          className="mb-6 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center gap-2 font-semibold"
         >
           ← Back
-        </Link>
+        </button>
 
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-8">
           <img
             src={
               movie.poster_path
@@ -41,29 +54,31 @@ const MovieDetails = () => {
                 : "https://via.placeholder.com/500x750?text=No+Image"
             }
             alt={movie.title}
-            className="w-64 rounded shadow-md"
+            className="w-full md:w-64 rounded-xl shadow-lg"
           />
 
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">
+          <div className="flex-1">
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
               {movie.title}
             </h1>
-            <p className="text-gray-400 mb-4">
-              {year} • ⭐ {rating}
+            <p className="text-gray-300 text-lg mb-4">
+              {year} • ⭐ {rating} •{" "}
+              {movie.runtime ? `${movie.runtime} mins` : "N/A"}
             </p>
-            <p className="mb-4">{movie.overview}</p>
+            <p className="mb-6 text-gray-200 leading-relaxed">
+              {movie.overview}
+            </p>
 
-            <div className="text-gray-300 space-y-1 text-sm">
+            <div className="text-gray-300 space-y-2 text-sm md:text-base">
               <p>
                 <strong>Genres:</strong>{" "}
                 {movie.genres?.map((g) => g.name).join(", ") || "N/A"}
               </p>
               <p>
-                <strong>Runtime:</strong>{" "}
-                {movie.runtime ? `${movie.runtime} mins` : "N/A"}
+                <strong>Status:</strong> {movie.status || "N/A"}
               </p>
               <p>
-                <strong>Status:</strong> {movie.status || "N/A"}
+                <strong>Release Date:</strong> {movie.release_date || "N/A"}
               </p>
             </div>
           </div>
