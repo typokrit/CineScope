@@ -1,13 +1,13 @@
-import "./App.css";
-import Homepage from "./components/HomePage";
-import MovieCard from "./components/MovieCard";
-import MovieList from "./components/MovieList";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
-    <div className="w-full h-full min-h-screen bg-gray-900 text-white">
-      <Homepage />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/movie/:id" element={<MovieDetails />} />
+    </Routes>
   );
 }
 
