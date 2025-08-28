@@ -57,7 +57,7 @@ const SearchPage = () => {
     <div className="bg-[#121212] min-h-screen text-white p-6">
       <button
         onClick={() => navigate("/")}
-        className="mb-6 flex items-center gap-2 text-white hover:text-gray-300"
+        className="mb-6 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center gap-2 font-semibold"
       >
         ← Back to Home
       </button>
@@ -71,11 +71,11 @@ const SearchPage = () => {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Search for movies..."
-          className="w-full max-w-3xl px-6 py-3 rounded-full bg-gray-800 text-white placeholder-gray-400 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full max-w-3xl px-6 py-3 rounded-full bg-gray-800 text-white placeholder-gray-400 text-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
         />
       </div>
 
-      {/* Results */}
+      {/* results */}
       {searchQuery === "" ? (
         <div className="text-center text-gray-400 text-xl">
           Start typing to search for movies!

@@ -11,7 +11,7 @@ const MovieList = ({ title, fetchUrl, searchQuery = "" }) => {
       .catch((err) => console.error(err));
   }, [fetchUrl]);
 
-  // Filter movies based on searchQuery
+  // filter movies
   const filteredMovies = searchQuery
     ? movies.filter((m) =>
         m.title.toLowerCase().includes(searchQuery.toLowerCase())
